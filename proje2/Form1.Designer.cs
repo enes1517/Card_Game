@@ -118,7 +118,6 @@
             Controls.Add(flowLayoutPanel2);
             Name = "Form1";
             Text = "Form1";
-            Load += Form1_Load;
             flowLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

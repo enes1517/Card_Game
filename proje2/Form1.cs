@@ -639,18 +639,11 @@ namespace proje2_
             HamleyiTamamla();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        
+       
     }
 
-    // Savaþ aracý sýnýflarý
+  
 
 
 
@@ -733,14 +726,11 @@ public abstract class SavasAraci
     public abstract string AltSinif { get; set; }
     public abstract string Sinif { get; set; }
     public abstract int Vurus { get; set; }
-    // Seviye puaný özelliði
     public int SeviyePuani { get; set; }
-    // Yapýcý metot
     public SavasAraci(int seviyePuani)
     {
         SeviyePuani = seviyePuani = 0;
     }
-    // Kart puaný gösterme metodu
    
     public SavasAraci Clone()
     {
@@ -867,11 +857,9 @@ public abstract class Hava : SavasAraci
 {
     public abstract int KaraVurusAvantaji { get; set; }
 
-    // Yapýcý metot, üst sýnýfýn yapýcýsýna seviye puaný gönderir
     public Hava(int seviyePuani = 0) : base(seviyePuani)
     {
     }
-    // Kart puaný gösterme metodunu gerekirse özelleþtirebiliriz
    
 }
 
