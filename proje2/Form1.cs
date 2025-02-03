@@ -674,18 +674,7 @@ namespace proje2_
         public override int Dayaniklilik { get; set; }
         public override string Sinif { get; set; }
         public override int Vurus { get; set; }
-        public override void DurumGuncelle(int saldiriDegeri, int avantaj)
-        {
-            Dayaniklilik -= saldiriDegeri;
-            if (Dayaniklilik <= 0)
-            {
-                Dayaniklilik = 0;
-            }
-        }
-        public override void KartPuaniGoster()
-        {
-            Console.WriteLine($"Altsinif:{AltSinif}  Seviye Puaný: {SeviyePuani} ");
-        }
+        
     }
 }
 
@@ -709,18 +698,7 @@ public class Siha : Hava
     public override int Dayaniklilik { get; set; }
     public override string Sinif { get; set; }
     public override int Vurus { get; set; }
-    public override void DurumGuncelle(int saldiriDegeri, int avantaj)
-    {
-        Dayaniklilik -= saldiriDegeri;
-        if (Dayaniklilik <= 0)
-        {
-            Dayaniklilik = 0;
-        }
-    }
-    public override void KartPuaniGoster()
-    {
-        Console.WriteLine($"Altsinif:{AltSinif},Seviye Puaný: {SeviyePuani} ");
-    }
+   
 }
 
 
@@ -745,18 +723,7 @@ public class Sida : Deniz
         KaraVurusAvantaji = karaVurusAvantaji;
     }
 
-    public override void DurumGuncelle(int saldiriDegeri, int avantaj)
-    {
-        Dayaniklilik -= saldiriDegeri;
-        if (Dayaniklilik <= 0)
-        {
-            Dayaniklilik = 0;
-        }
-    }
-    public override void KartPuaniGoster()
-    {
-        Console.WriteLine($"Altsinif:{AltSinif},  Seviye Puaný: {SeviyePuani} ");
-    }
+  
 }
 
 
@@ -774,12 +741,7 @@ public abstract class SavasAraci
         SeviyePuani = seviyePuani = 0;
     }
     // Kart puaný gösterme metodu
-    public virtual void KartPuaniGoster()
-    {
-        Console.WriteLine($"Dayanýklýlýk: {Dayaniklilik}, Seviye Puaný: {SeviyePuani}");
-    }
-    // Abstract metod: Durum Güncelle
-    public abstract void DurumGuncelle(int saldiriDegeri, int avantaj);
+   
     public SavasAraci Clone()
     {
         return (SavasAraci)this.MemberwiseClone();
@@ -793,9 +755,8 @@ public class Oyuncu
     public int oyuncuID { get; set; }
     public string oyuncuAdi { get; set; }
     public int skor { get; set; }
-    public List<SavasAraci> kartListesi { get; set; } // Kartlar string olarak tutuluyor
-
-    // Parametresiz yapýcý (default constructor)
+    public List<SavasAraci> kartListesi { get; set; } 
+    
 
 
     // Parametreli yapýcý
@@ -809,14 +770,7 @@ public class Oyuncu
     }
 
 
-    // Skor gösterme fonksiyonu
-    public void SkorGoster()
-    {
-        Console.WriteLine(skor);
-    }
-
-    // Kart seçme fonksiyonu (bilgisayar ve kullanýcý için ayrý iþleyecek)
-
+    
 }
 
 public class Bilgisayar : Oyuncu
@@ -867,18 +821,7 @@ public class Obus : Kara
     public override int Dayaniklilik { get; set; }
     public override string Sinif { get; set; }
     public override int Vurus { get; set; }
-    public override void DurumGuncelle(int saldiriDegeri, int avantaj)
-    {
-        Dayaniklilik -= saldiriDegeri;
-        if (Dayaniklilik <= 0)
-        {
-            Dayaniklilik = 0;
-        }
-    }
-    public override void KartPuaniGoster()
-    {
-        Console.WriteLine($"Altsinif:{AltSinif}, Seviye Puaný: {SeviyePuani} ");
-    }
+    
 }
 
 
@@ -903,18 +846,7 @@ public class KFS : Kara
     public override int Dayaniklilik { get; set; }
     public override string Sinif { get; set; }
     public override int Vurus { get; set; }
-    public override void DurumGuncelle(int saldiriDegeri, int avantaj)
-    {
-        Dayaniklilik -= saldiriDegeri;
-        if (Dayaniklilik <= 0)
-        {
-            Dayaniklilik = 0;
-        }
-    }
-    public override void KartPuaniGoster()
-    {
-        Console.WriteLine($"Altsinif:{AltSinif}, Seviye Puaný: {SeviyePuani} ");
-    }
+  
 }
 
 
@@ -926,18 +858,7 @@ public abstract class Kara : SavasAraci
     protected Kara(int seviyePuani = 0) : base(seviyePuani)
     {
     }
-    public override void KartPuaniGoster()
-    {
-        Console.WriteLine($"Dayanýklýlýk: {Dayaniklilik}, Seviye Puaný: {SeviyePuani}");
-    }
-    public override void DurumGuncelle(int saldiriDegeri, int avantaj)
-    {
-        Dayaniklilik -= saldiriDegeri;
-        if (Dayaniklilik <= 0)
-        {
-            Dayaniklilik = 0;
-        }
-    }
+    
 }
 
 
@@ -951,17 +872,7 @@ public abstract class Hava : SavasAraci
     {
     }
     // Kart puaný gösterme metodunu gerekirse özelleþtirebiliriz
-    public override void KartPuaniGoster()
-    {
-        Console.WriteLine($"Dayanýklýlýk: {Dayaniklilik}, Seviye Puaný: {SeviyePuani}");
-    }
-    // Durum güncelleme metodunu gerekirse özelleþtirebiliriz
-    public override void DurumGuncelle(int saldiriDegeri, int avantaj)
-    {
-        Dayaniklilik -= saldiriDegeri; // Saldýrý deðeri kadar dayanýklýlýk azaltýlýr
-        if (Dayaniklilik < 0) Dayaniklilik = 0; // Dayanýklýlýk sýfýrýn altýna düþmemeli
-        SeviyePuani += 10; // Örnek olarak, her saldýrýdan sonra 10 puan eklenebilir
-    }
+   
 }
 
 
@@ -984,18 +895,7 @@ public class Firkateyn : Deniz
     public override int Dayaniklilik { get; set; }
     public override string Sinif { get; set; }
     public override int Vurus { get; set; }
-    public override void DurumGuncelle(int saldiriDegeri, int avantaj)
-    {
-        Dayaniklilik -= saldiriDegeri;
-        if (Dayaniklilik <= 0)
-        {
-            Dayaniklilik = 0;
-        }
-    }
-    public override void KartPuaniGoster()
-    {
-        Console.WriteLine($"Altsinif:{AltSinif}, Seviye Puaný: {SeviyePuani} ");
-    }
+    
 }
 
 public abstract class Deniz : SavasAraci
@@ -1006,18 +906,7 @@ public abstract class Deniz : SavasAraci
     {
     }
 
-    public override void KartPuaniGoster()
-    {
-        Console.WriteLine($"Dayanýklýlýk: {Dayaniklilik}, Seviye Puaný: {SeviyePuani}");
-    }
-    public override void DurumGuncelle(int saldiriDegeri, int avantaj)
-    {
-        Dayaniklilik -= saldiriDegeri;
-        if (Dayaniklilik <= 0)
-        {
-            Dayaniklilik = 0;
-        }
-    }
+   
 }
 
 
